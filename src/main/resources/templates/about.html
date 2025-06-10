@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+    <title>Home</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <!-- Hero Start -->
+    <div class="container-fluid bg-light py-6 my-6 mt-0">
+        <div class="container text-center animated bounceInDown">
+            <h1 class="display-1 mb-4">About Us</h1>
+            <ol class="breadcrumb justify-content-center mb-0 animated bounceInDown">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item text-dark" aria-current="page">About</li>
+            </ol>
+        </div>
+    </div>
+    <!-- Hero End -->
+    <!-- About Start -->
+    <div class="container-fluid py-6">
+        <div class="container">
+            <div class="row g-5 align-items-center"  th:each="about:${abouts}">
+                <div class="col-lg-5 wow bounceInUp" data-wow-delay="0.1s">
+                    <img th:src="${about.photoUrl}" class="img-fluid rounded" alt="">
+                </div>
+                <div class="col-lg-7 wow bounceInUp" data-wow-delay="0.3s">
+                    <small class="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-3">About Us</small>
+                    <h1 th:text="${about.title}" class="display-5 mb-4">Trusted By 200 + satisfied clients</h1>
+                    <p th:text="${about.subTitle}" class="mb-4">Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore eit esdioilore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullaemco laboeeiris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor iesdein reprehendeerit in voluptate velit esse cillum dolore.</p>
+                    <div th:text="${about.information}" class="row g-4 text-dark mb-5">
+                        <div class="col-sm-6">
+                            <i  class="fas fa-share text-primary me-2"></i>Fresh and Fast food Delivery
+                        </div>
+                    </div>
+                    <a href="" class="btn btn-primary py-3 px-5 rounded-pill">About Us<i class="fas fa-arrow-right ps-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Fact Start-->
+    <div class="container-fluid faqt py-6">
+        <div class="container">
+            <div class="row g-6 align-items-center">
+                <div class="col-lg-7"  >
+                    <div class="row g-2" >
+                        <div class="col-sm-4 wow bounceInUp" data-wow-delay="0.3s" th:each="view:${views}">
+                            <div class="faqt-item bg-primary rounded p-4 text-center">
+                                <i class="fas fa-users fa-4x mb-4 text-white"></i>
+                                <h1 th:text="${view.number}" class="display-4 fw-bold" data-toggle="counter-up">689</h1>
+                                <p th:text="${view.name}" class="text-dark text-uppercase fw-bold mb-0">Happy Customers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 wow bounceInUp" data-wow-delay="0.1s">
+                    <div class="video">
+                        <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Video -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 16:9 aspect ratio -->
+                    <div class="ratio ratio-16x9">
+                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+                                allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fact End -->
+
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-lg-3 col-md-6 d-flex justify-content-center" th:each="team : ${teams}">
+            <div class="team-item rounded h-100 d-flex flex-column p-2 shadow" style="min-height: 520px; width: 100%; max-width: 300px;">
+                <!-- Şəkil bir az daha böyük oldu -->
+                <img class="img-fluid rounded-top" th:src="${team.photoUrl}" alt=""
+                     style="object-fit: cover; height: 320px; width: 100%;">
+
+                <!-- Məzmun hissəsi ortalanmış -->
+                <div class="team-content bg-dark text-center py-3 rounded-bottom d-flex flex-column justify-content-between flex-grow-1" style="margin-top: auto; margin-bottom: auto;">
+
+                    <!-- Ad və vəzifə -->
+                    <div class="mt-auto pb-3">
+                        <h4 th:text="${team.chefName}" class="text-primary mb-2" style="padding-top: 10px;">Chef Name</h4>
+                        <p th:text="${team.professions}" class="text-white mb-0">Profession</p>
+                    </div>
+
+                    <!-- Sosial ikonlar -->
+                    <div class="team-icon d-flex flex-column justify-content-center align-items-center mt-auto mb-2">
+                        <a class="share btn btn-primary btn-md-square rounded-circle mb-2" href="#"><i class="fas fa-share-alt"></i></a>
+                        <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
